@@ -34,7 +34,10 @@ class User(UserMixin, Document):
     adult_fname = StringField()
     adult_lname = StringField()
     adult_email = StringField()
+    phonenumber = IntField()
     consent = BooleanField(default=False)
+    role = StringField()
+
 
     meta = {
         'ordering': ['lname','fname']
@@ -94,6 +97,16 @@ class Clinic(Document):
     lat = FloatField()
     lon = FloatField()
     
+    meta = {
+        'ordering': ['-createdate']
+    }
+
+class Stuffie(Document):
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    name = StringField() 
+    type = StringField()
+    brand = StringField()
+
     meta = {
         'ordering': ['-createdate']
     }

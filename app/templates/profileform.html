@@ -6,14 +6,21 @@
     <!--enctype is needed to upload files -->
     <form action="" method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
-        <p>
+        <p style="font-family:'Sedan';">
             {{ form.fname.label }}<br>
             {{ form.fname(size=64) }}<br>
             {% for error in form.fname.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>
+        <p style="font-family:'Sedan';">
+            {{ form.role.label }}<br>
+            {{ form.role() }}<br>
+            {% for error in form.role.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p> 
+        <p style="font-family:'Sedan';">
             {{ form.lname.label }}<br>
             {{ form.lname() }}<br>
             {% for error in form.lname.errors %}
@@ -21,7 +28,7 @@
             {% endfor %}
         </p>
 
-        <p>
+        <p style="font-family:'Sedan';">
             {{ form.image.label }}<br>
             {% if current_user.image %}
                 <img class="img-thumbnail" width="100" src="data:image;base64,{{base64encode(current_user.image.read())}}"> <br>
@@ -33,7 +40,7 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p style="font-family:'Sedan';">{{ form.submit() }}</p>
     </form>
 
 {% endblock %}

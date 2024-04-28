@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<body style = 'background-color: lightpink;'>
+<h1 style="font-family:'Sedan';">View your collection or <a href="/stuffie/new"class="btn btn-success" role="button">enter stuffie !</a></h1>
+<hr>
+
+   {% if stuffies %}
+    {% for stuffie in stuffies %}
+        <div class="row border-bottom">
+            <div class="col-2">
+                {% if stuffie.author == current_user %}
+                {% endif %}
+                {% if loop.index == 1 %}
+                <h3 style="font-family:'Sedan';"class="display-5">name</h3>
+                <hr>
+                {% endif %}
+                <a href="/stuffie/{{stuffie.id}}">
+                <p style="font-family:'Sedan';">{{stuffie.name}}</p>
+                </a>
+            </div>
+            <div class="col-2">
+                {% if loop.index == 1 %}
+                <h3 style="font-family:'Sedan';"class="display-5">type</h3>
+                <hr>
+                {% endif %}
+                <p style="font-family:'Sedan';">{{stuffie.type}}</p>
+            </div>
+            <div class="col">
+                {% if loop.index == 1 %}
+                    <h3 style="font-family:'Sedan';"class="display-5">brand</h3>
+                    <hr>
+                {% endif %}
+                <p style="font-family:'Sedan';">{{stuffie.brand}}</p>
+            </div>
+        </div>
+    </body>
+    {% endfor %}
+{% else %}
+
+{% endif %}
+
+{% endblock %}

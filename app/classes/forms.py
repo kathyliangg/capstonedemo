@@ -12,15 +12,9 @@ from wtforms_components import TimeField
 class ProfileForm(FlaskForm):
     fname = StringField('First Name', validators=[DataRequired()])
     lname = StringField('Last Name', validators=[DataRequired()]) 
-    image = FileField("Image") 
+    email = EmailField('Email',validators=[Email()])
     submit = SubmitField('Post')
-
-class ConsentForm(FlaskForm):
-    adult_fname = StringField('First Name',validators=[DataRequired()])
-    adult_lname = StringField('Last Name',validators=[DataRequired()])
-    adult_email = EmailField('Email',validators=[Email()])
-    consent = RadioField('Do you want your parents or teachers to see your sleep data/graph', choices=[(True,"True"),(False,"False")])
-    submit = SubmitField('Submit')
+    role = SelectField('Role',choices=[("Teacher","Teacher"),("Student","Student")])
 
 class SleepForm(FlaskForm):
     rating = SelectField("How would you rate your sleep: 5 is great, 1 is poor", choices=[(None,'---'),(1,1),(2,2),(3,3),(4,4),(5,5)], validators=[DataRequired()])
@@ -38,6 +32,13 @@ class BlogForm(FlaskForm):
     tag = StringField('Tag', validators=[DataRequired()])
     submit = SubmitField('Blog')
 
+class ConsentForm(FlaskForm):
+    adult_fname = StringField('First Name',validators=[DataRequired()])
+    adult_lname = StringField('Last Name',validators=[DataRequired()])
+    adult_email = EmailField('Email',validators=[Email()])
+    consent = RadioField('Do you want your parents or teachers to see your sleep data/graph', choices=[(True,"True"),(False,"False")])
+    submit = SubmitField('Submit')
+
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')
@@ -50,3 +51,9 @@ class ClinicForm(FlaskForm):
     zipcode = StringField('Zipcode',validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
     submit = SubmitField('Submit')
+
+class StuffieForm(FlaskForm):
+    name = StringField('name', validators=[DataRequired()])
+    type = StringField('type', validators=[DataRequired()])
+    brand = StringField('brand', validators=[DataRequired()])
+    submit = SubmitField('record')

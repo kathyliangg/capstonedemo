@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block body %}
+<body style = 'background-color: lightpink;'>
+
+        <h1 style="font-family:'Sedan';">Add your stuffie !</h1>
+        <hr>
+
+        <div class="text-center">
+
+    
+        <form method=post>
+            {{ form.hidden_tag() }}
+            <p style="font-family:'Sedan';">
+             <br>
+                {{ form.name.label }} <br>
+                {{ form.name() }}
+                <!--List the errors for this field-->
+                {% for error in form.name.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p style="font-family:'Sedan';">
+             <br>
+                {{ form.type.label }} <br>
+                {{ form.type() }}
+                <!--List the errors for this field-->
+                {% for error in form.type.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p style="font-family:'Sedan';">
+            <br>
+                {{ form.brand.label }} <br>
+                {{ form.brand() }}
+                <!--List the errors for this field-->
+                {% for error in form.brand.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+             <p style="font-family:'Sedan';">
+                {{form.submit()}}
+            </p>
+        </form>
+    </div>
+</body>
+       
+{% endblock %}
