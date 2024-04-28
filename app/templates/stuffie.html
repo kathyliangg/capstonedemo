@@ -4,14 +4,14 @@
 <body style = 'background-color: lightpink;'>
 {% if stuffie %}
     <br>
-    {% if stuffie.author == current_user %}
+    <!-- {% if stuffie.author == current_user %}
         <a data-toggle="tooltip" data-placement="top" title="Delete Stuffie" href="/stuffie/delete/{{stuffie.id}}">
             <img width="40" class="bottom-image" src="/static/delete.png">
         </a>
         <a data-toggle="tooltip" data-placement="top" title="Edit Stuffie" href="/stuffie/edit/{{stuffie.id}}">
             <img width="40" class="bottom-image" src="/static/edit.png">
         </a>
-    {% endif %}
+    {% endif %} -->
 <center>
 <h3 style="font-family:'Sedan';"class="display-7">name: {{stuffie.name}}</h3>
 <br>

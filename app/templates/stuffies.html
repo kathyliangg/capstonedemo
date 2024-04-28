@@ -12,26 +12,26 @@
                 {% if stuffie.author == current_user %}
                 {% endif %}
                 {% if loop.index == 1 %}
-                <h3 style="font-family:'Sedan';"class="display-5">name</h3>
+                <h4 style="font-family:'Sedan';"class="display-5"><center>name</center></h4>
                 <hr>
                 {% endif %}
                 <a href="/stuffie/{{stuffie.id}}">
-                <p style="font-family:'Sedan';">{{stuffie.name}}</p>
+                <p style="font-family:'Sedan';"><center>{{stuffie.name}}</center></p>
                 </a>
             </div>
             <div class="col-2">
                 {% if loop.index == 1 %}
-                <h3 style="font-family:'Sedan';"class="display-5">type</h3>
+                <h4 style="font-family:'Sedan';"class="display-5"><center>type</center></h4>
                 <hr>
                 {% endif %}
-                <p style="font-family:'Sedan';">{{stuffie.type}}</p>
+                <p style="font-family:'Sedan';"><center>{{stuffie.type}}</center></p>
             </div>
             <div class="col">
                 {% if loop.index == 1 %}
-                    <h3 style="font-family:'Sedan';"class="display-5">brand</h3>
+                    <h4 style="font-family:'Sedan';"class="display-5"><center>brand    ｡:ﾟ૮ ˶ˆ ﻌ ˆ˶ ა ﾟ:｡</center></h4>
                     <hr>
                 {% endif %}
-                <p style="font-family:'Sedan';">{{stuffie.brand}}</p>
+                <p style="font-family:'Sedan';"><center>{{stuffie.brand}}</center></p>
             </div>
         </div>
     </body>

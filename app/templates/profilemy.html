@@ -3,7 +3,7 @@
 {% block body %}
 <body style = 'background-color:pink;' style="font-family:'Sedan';">
 <h1 style="font-family:'Sedan';" class="display-1">
-    My Profile
+    <center>⋆ ˚｡⋆୨୧˚ My Profile ˚୨୧⋆｡˚ ⋆</center>
 </h1>
     <div class="col display-5">
         <p style="font-family:'Sedan';">{% if current_user.fname and current_user.lname %}
@@ -13,7 +13,7 @@
         {% endif %}
         Email: {{current_user.email}} <br></p>
         <hr>
-        <h1 style="font-family:'Sedan';"><a href="/stuffie/new"class="btn btn-success" role="button">enter stuffie !</a></h1>
+        <h1 style="font-family:'Sedan';"><a href="/stuffie/new"class="btn btn-success" role="button">enter stuffie !</a>
         <h1 style="font-family:'Sedan';"><a href="/stuffie/list"class="btn btn-info" role="button">view collection</a></h1>
     </div>
 
