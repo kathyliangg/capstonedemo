@@ -2,23 +2,36 @@
 
 {% block body %}
 <body style = 'background-color: lightpink;'>
+    <h1 style="font-family:'Sedan';"class="display-7">Here is your reciept !</h1>
+    <hr>
 {% if stuffie %}
     <br>
-    <!-- {% if stuffie.author == current_user %}
+    {% if stuffie.author == current_user %}
         <a data-toggle="tooltip" data-placement="top" title="Delete Stuffie" href="/stuffie/delete/{{stuffie.id}}">
             <img width="40" class="bottom-image" src="/static/delete.png">
         </a>
         <a data-toggle="tooltip" data-placement="top" title="Edit Stuffie" href="/stuffie/edit/{{stuffie.id}}">
             <img width="40" class="bottom-image" src="/static/edit.png">
         </a>
-    {% endif %} -->
-<center>
-<h3 style="font-family:'Sedan';"class="display-7">name: {{stuffie.name}}</h3>
-<br>
-<h3 style="font-family:'Sedan';"class="display-7">type: {{stuffie.type}}</h3>
-<br> 
-<h3 style="font-family:'Sedan';"class="display-7">brand: {{stuffie.brand}}</h3>
-</center>
+    {% endif %}
+<!-- <h1 style="font-family:'Sedan';"class="display-7">Here is your reciept !</h1> -->
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+        <h3 style="font-family:'Sedan';"class="display-7">name: {{stuffie.name}}</h3>
+        <p>
+        <h3 style="font-family:'Sedan';"class="display-7">type: {{stuffie.type}}</h3>
+        </p>
+        <p> 
+        <h3 style="font-family:'Sedan';"class="display-7">brand: {{stuffie.brand}}</h3>
+        </p>
+    </div>
+    <div class="col">
+        <img src="https://media.tenor.com/KuCmU3O8vQUAAAAj/snoopy.gif"
+        length="450"
+        width="450">
+    </div>
+</div>
 </body>
 
     {% else %}

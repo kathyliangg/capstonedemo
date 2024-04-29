@@ -8,31 +8,17 @@ from flask_login import login_required
 import datetime as dt
 
 @app.route('/stuffie/new', methods=['GET', 'POST'])
-# This means the user must be logged in to see this page
 @login_required
-# This is a function that is run when the user requests this route.
 def stuffieNew():
-    # This gets the form object from the form.py classes that can be displayed on the template.
     form = StuffieForm()
-
-    # This is a conditional that evaluates to 'True' if the user submitted the form successfully.
-    # validate_on_submit() is a method of the form object. 
     if form.validate_on_submit():
-
-        # This stores all the values that the user entered into the new blog form. 
-        # Blog() is a mongoengine method for creating a new blog. 'newBlog' is the variable 
-        # that stores the object that is the result of the Blog() method.  
         newStuffie = Stuffie(
-            # the left side is the name of the field from the data table
-            # the right side is the data the user entered which is held in the form object.
+            author = current_user,
             name = form.name.data,
             type = form.type.data,
             brand = form.brand.data,
-            # This sets the modifydate to the current datetime.
         )
-        # This is a method that saves the data to the mongoDB database.
         newStuffie.save()
-
         # Once the new blog is saved, this sends the user to that blog using redirect.
         # and url_for. Redirect is used to redirect a user to different route so that 
         # routes code can be run. In this case the user just created a blog so we want 
@@ -79,19 +65,34 @@ def stuffie(stuffieID):
 @login_required
 def stuffieEdit(stuffieID):
     editStuffie = Stuffie.objects.get(id=stuffieID)
+
     if current_user != editStuffie.author:
         flash("You can't edit a stuffie that is not your's !")
-        return redirect(url_for('stuffie',stuffieID=editStuffie.stuffie.id))
-    Stuffie = Stuffie.objects.get(id=editStuffie.stuffie.id)
+        return redirect(url_for('stuffie',stuffieID=editStuffie.id))
+    
     form = StuffieForm()
+
     if form.validate_on_submit():
+        # thisDict = {"name":form.name.data,
+        #           "type":form.type.data,
+        #           "brand":form.brand.data
+                #   }
         editStuffie.update(
             name = form.name.data,
             type = form.type.data,
-            brand = form.brand.data,
-            modifydate = dt.datetime.utcnow
+            brand = form.brand.data
         )
-        return redirect(url_for('stuffie',StuffieID=editStuffie.stuffie.id))
+     
+        # editStuffie.update({"name":form.name.data,
+        #            "type":form.type.data,
+        #            "brand":form.brand.data})
+        
+        #return redirect(url_for('stuffie',StuffieID=stuffieID))
+        return redirect(url_for('stuffieList'))
+    form = StuffieForm()
+
+    # flash('This stuffie is'+ stuffieID)
+    # return redirect(url_for('stuffieList')) 
 
     form.name.data = editStuffie.name
     form.type.data = editStuffie.type
@@ -99,10 +100,12 @@ def stuffieEdit(stuffieID):
 
     return render_template('stuffieform.html',form=form,stuffie=stuffie)   
 
+
+
 @app.route('/stuffie/delete/<stuffieID>')
 @login_required
 def stuffieDelete(stuffieID): 
     deleteStuffie = Stuffie.objects.get(id=stuffieID)
     deleteStuffie.delete()
     flash('This stuffie is deleted.')
-    return redirect(url_for('stuffie',stuffieID=deleteStuffie.stuffie.id)) 
+    return redirect(url_for('stuffieList')) 
