@@ -57,3 +57,8 @@ class StuffieForm(FlaskForm):
     type = StringField('type', validators=[DataRequired()])
     brand = StringField('brand', validators=[DataRequired()])
     submit = SubmitField('record')
+
+class NoteForm(FlaskForm):
+    note = StringField('note',validators=[DataRequired()])
+    submit = SubmitField('record')
+

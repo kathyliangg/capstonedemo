@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<body style = 'background-color: #d8acc9;'>
+<center><h1 style="font-family:'Times';">view your reminders or <a href="/note/new"class="btn btn-success" role="button">enter a reminder !</a></h1>
+</center><hr>
+
+   {% if notes %}
+    {% for note in notes %}
+    {% if loop.index == 1 %}
+    <div class="row border-bottom">
+        <div class="col-2">
+            <h4 style="font-family:'Sedan';"class="display-5"><center>reminders:</center></h4>
+        </div>
+    {% endif %}
+    {% if note.author == current_user %}
+    <div class="row">
+        <div class="col-2">
+            <a href="/note/{{note.id}}">
+            <p style="font-family:'Sedan';"><center>{{note.note}}</center></p>
+            </a>
+        </div>
+    
+          
+    {% endif %}   
+    </body>
+    {% endfor %}
+{% else %}
+
+{% endif %}
+
+{% endblock %}

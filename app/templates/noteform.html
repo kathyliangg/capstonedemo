@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body %}
+<body style = 'background-color: lightpink;'>
+
+      <center><h1 style="font-family:'Sedan';">enter a reminder for yourself here!</h1> </center>
+    <center>   /ᐠ - ˕ -マ ૮ • ﻌ - ა ฅ՞•ﻌ•՞ฅ ₍˄•͈⚇•͈˄₎  </center>
+            
+        </div>
+        <hr>
+        <div class="text-center">
+        <form method=post>
+            {{ form.hidden_tag() }}
+            <p style="font-family:'Sedan';">
+             <br>
+                {{ form.note.label }} <br>
+                {{ form.note() }}
+                <!--List the errors for this field-->
+                {% for error in form.note.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+
+             <p style="font-family:'Sedan';">
+                
+                {{form.submit()}}
+            </p>
+        </form>
+        <img src="https://i.gifer.com/5zoL.gif"
+            width="400"
+            length="400">
+    </div>
+</body>
+       
+{% endblock %}
+
+

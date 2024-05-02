@@ -2,17 +2,19 @@
 
 {% block body %}
 <body style = 'background-color: lightpink;'>
-    <h1 style="font-family:'Sedan';"class="display-7">Here is your reciept !</h1>
+    <h1 style="font-family:'Sedan';"class="display-7">here is your reciept !</h1>
     <hr>
+    <h1 style="font-family:'Sedan';"><a href="/stuffies"class="btn btn-success" role="button">view collection !</a></h1>
+
 {% if stuffie %}
     <br>
     {% if stuffie.author == current_user %}
         <a data-toggle="tooltip" data-placement="top" title="Delete Stuffie" href="/stuffie/delete/{{stuffie.id}}">
             <img width="40" class="bottom-image" src="/static/delete.png">
         </a>
-        <a data-toggle="tooltip" data-placement="top" title="Edit Stuffie" href="/stuffie/edit/{{stuffie.id}}">
+        <!-- <a data-toggle="tooltip" data-placement="top" title="Edit Stuffie" href="/stuffie/edit/{{stuffie.id}}">
             <img width="40" class="bottom-image" src="/static/edit.png">
-        </a>
+        </a> -->
     {% endif %}
 <!-- <h1 style="font-family:'Sedan';"class="display-7">Here is your reciept !</h1> -->
 <div class="container text-center">

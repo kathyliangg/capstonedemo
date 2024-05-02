@@ -110,3 +110,11 @@ class Stuffie(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+class Note(Document) :
+    author = ReferenceField('User',reverse_delete_rule=CASCADE) 
+    note = StringField()
+
+    meta = {
+        'ordering': ['-createdate']
+    }
